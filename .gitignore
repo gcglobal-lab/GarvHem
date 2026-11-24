@@ -1,0 +1,22 @@
+node_modules/
+.next/
+out/
+build/
+coverage/
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
+npm-debug.log*
+
+# secrets
+.env
+.env.*
+!.env.example
+
+# generated / runtime
+src/generated/
+.local/
+storage/
+playwright-report/
+test-results/
+.vercel

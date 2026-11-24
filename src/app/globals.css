@@ -1,0 +1,251 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Brand palette, taken from the GARVHEM logo: ink navy, chrome silver, signal red ── */
+:root {
+  --background: #ffffff;
+  --canvas: #f4f6fa;
+  --surface: #ffffff;
+  --surface-2: #f2f4f9;
+  --foreground: #0b1220;
+  --muted: #566078;
+  --border: #e1e5ee;
+  --input: #cfd5e2;
+  --primary: #0b1220;
+  --primary-foreground: #ffffff;
+  --brand: #d90b1c;
+  --brand-strong: #b50816;
+  --brand-foreground: #ffffff;
+  --brand-soft: #fdecee;
+  --accent: #2f5bea;
+  --accent-soft: #eaf0fe;
+  --success: #0b7a52;
+  --success-soft: #e3f6ee;
+  --warning: #8f5b06;
+  --warning-soft: #fdf2dc;
+  --danger: #c0121f;
+  --danger-soft: #fdecee;
+  --ring: #2f5bea;
+  --chart-1: #2f5bea;
+  --chart-2: #e5484d;
+  --chart-3: #0e9f8e;
+  --chart-4: #b7791f;
+  --chart-5: #7c5ce0;
+  --chart-grid: #e6e9f1;
+  --shadow-color: 222 40% 12%;
+}
+
+.dark {
+  --background: #070c18;
+  --canvas: #070c18;
+  --surface: #0e1526;
+  --surface-2: #151e33;
+  --foreground: #eceff6;
+  --muted: #9ba6bd;
+  --border: #202b44;
+  --input: #2d3a58;
+  --primary: #eceff6;
+  --primary-foreground: #0b1220;
+  --brand: #e4192a;
+  --brand-strong: #f0323f;
+  --brand-foreground: #ffffff;
+  --brand-soft: #34121c;
+  --accent: #7c9cff;
+  --accent-soft: #17244a;
+  --success: #4fd1a0;
+  --success-soft: #0e2d29;
+  --warning: #f0bb5c;
+  --warning-soft: #33260f;
+  --danger: #ff7a82;
+  --danger-soft: #37141c;
+  --ring: #7c9cff;
+  --chart-1: #5b82f5;
+  --chart-2: #f0555b;
+  --chart-3: #16a394;
+  --chart-4: #b98424;
+  --chart-5: #8f73ee;
+  --chart-grid: #1c2740;
+  --shadow-color: 222 60% 2%;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-brand: var(--brand);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-soft: var(--brand-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-ring: var(--ring);
+
+  --color-ink: #0b1220;
+  --color-ink-950: #05080f;
+  --color-ink-900: #0b1220;
+  --color-ink-800: #121b30;
+  --color-ink-700: #1c2945;
+  --color-signal: #ff2233;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --radius-card: 1rem;
+  --shadow-soft: 0 1px 2px hsl(var(--shadow-color) / 0.05), 0 8px 24px -12px hsl(var(--shadow-color) / 0.14);
+  --shadow-lift: 0 2px 6px hsl(var(--shadow-color) / 0.06), 0 24px 48px -20px hsl(var(--shadow-color) / 0.28);
+
+  --animate-marquee: marquee 48s linear infinite;
+  --animate-fade-in: fade-in 180ms ease-out;
+  --animate-pop-in: pop-in 180ms cubic-bezier(0.2, 0.9, 0.3, 1.1);
+  --animate-slide-in: slide-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --animate-accordion-down: accordion-down 220ms ease-out;
+  --animate-accordion-up: accordion-up 180ms ease-in;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px) scale(0.98);
+    }
+  }
+  @keyframes slide-in {
+    from {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes accordion-down {
+    from {
+      height: 0;
+      opacity: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+      opacity: 1;
+    }
+    to {
+      height: 0;
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--brand) 24%, transparent);
+  }
+  input[type="date"],
+  input[type="time"],
+  input[type="month"],
+  input[type="datetime-local"] {
+    min-height: 2.5rem;
+  }
+}
+
+@layer utilities {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: var(--input) transparent;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  /* Chrome lettering, as in the wordmark */
+  .text-chrome {
+    background: linear-gradient(180deg, #ffffff 0%, #f3f5fa 42%, #a9b2c4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+  .grid-lines-ink {
+    background-image:
+      linear-gradient(to right, rgb(11 18 32 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(11 18 32 / 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
